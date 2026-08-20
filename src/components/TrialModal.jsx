@@ -15,14 +15,16 @@ export default function TrialModal({ isOpen, onClose, selectedProgramDefault }) 
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      // Create WhatsApp redirect message
-      const text = `Assalamu'alaikum Al-Fatih Academy,%0A%0ASaya ingin mendaftar *Trial Gratis 1-on-1*:%0A- *Nama*: ${formData.name}%0A- *No WA*: ${formData.phone}%0A- *Program*: ${formData.program}%0A- *Pilihan Waktu*: ${formData.time}%0A- *Catatan*: ${formData.notes || '-'}`;
-      window.open(`https://wa.me/6285815455474?text=${text}`, '_blank');
-      setSubmitted(false);
-      onClose();
-    }, 1200);
+    const nameEnc = encodeURIComponent(formData.name);
+    const phoneEnc = encodeURIComponent(formData.phone);
+    const progEnc = encodeURIComponent(formData.program);
+    const timeEnc = encodeURIComponent(formData.time);
+    
+    const text = `Assalamu'alaikum Al-Fatih Academy,%0A%0ASaya ingin mendaftar *Trial Gratis 1-on-1*:%0A- *Nama*: ${nameEnc}%0A- *No WA*: ${phoneEnc}%0A- *Program*: ${progEnc}%0A- *Pilihan Waktu*: ${timeEnc}`;
+    const waUrl = `https://api.whatsapp.com/send?phone=6285815455474&text=${text}`;
+    
+    window.open(waUrl, '_blank');
+    onClose();
   };
 
   return (

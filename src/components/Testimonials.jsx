@@ -14,7 +14,7 @@ export default function Testimonials() {
       name: "Ustadzah Iva Makhmudah, S.Pd",
       role: "Spesialis Ngaji Anak & Iqro",
       exp: "8+ Tahun Pengalaman",
-      spec: "Metode Talaqqi Ramah Anak",
+      spec: "Sanad Hj. Umi Salamah Yahya & KH. Arwani Amin Kudus",
       img: "/assets/tutor_female.jpg"
     }
   ];
